@@ -1,21 +1,27 @@
 var btnTranslate = document.querySelector("#btn-translate");
 var outputDiv = document.querySelector("#output");
+var txtInput = document.querySelector("#txt-input");
 
+var serverURL = "https://api.funtranslations.com/translate/minion.json"
+
+function getTranslationURL(text){
+    return serverURL + "?" +"text=" + text
+}
 
 function clickHandler() {
-    console.log("clicked!");
-    console.log("input", txtInput.value);
+    var input= txtInput.value
+    fetch(getTranslationURL(input))
+    .then(response =>response.json())
+    .then(json=> {
+        var output =json.contents.translated;
+    outputDiv.innerText = output})
 };
 
-var txtInput = document.querySelector("#txt-input");
-console.log(txtInput);
 
 
-btnTranslate.addEventListener("click",clickHandler)
 
  
 // outputDiv.innerText="Gautam Adatra";
-function clickHandler(){
-    outputDiv.innerText = "The meaning is: "+ txtInput.value;
 
-}
+btnTranslate.addEventListener("click",clickHandler)
+
