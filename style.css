@@ -49,3 +49,10 @@ textarea {
     
 
 }
+.image{
+    display:block;
+    max-width:130px;
+    height:15vh;
+    padding:0.5rem;
+    margin:auto;
+}
