@@ -15,12 +15,13 @@ alert("Something wrong with the server, try again after sometime")
 
 
 function clickHandler() {
-    var input= txtInput.value
-    fetch(getTranslationURL(input))
+    var inputText= txtInput.value;
+    fetch(getTranslationURL(inputText))
     .then(response =>response.json())
     .then(json=> {
         var output =json.contents.translated;
-    outputDiv.innerText = output}).catch(errorHandler)
+    outputDiv.innerText = output})
+    .catch(errorHandler)
 };
 
 
